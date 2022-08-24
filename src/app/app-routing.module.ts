@@ -8,9 +8,14 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'catalogue',
     pathMatch: 'full'
   },
+  {
+    path: 'catalogue',
+    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule)
+  },
+  
 ];
 
 @NgModule({

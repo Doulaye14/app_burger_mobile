@@ -1,0 +1,11 @@
+<div class="mosaique" (click)="redirectTo(product)">
+  <ion-card>
+    <ion-card-header>
+      <ion-img src="{{ 'data:image/*;base64,'+ product.image }}"></ion-img>
+    </ion-card-header>
+    <ion-card-content class="text-center">
+      <ion-title>{{ product.nom }}</ion-title>
+      <ion-title>Prix : {{ product.prix | currency: 'fcfa' }}</ion-title>
+    </ion-card-content>
+  </ion-card>
+</div>
