@@ -6,12 +6,8 @@ import { CataloguePageRoutingModule } from './catalogue-routing.module';
 import { CataloguePage } from './catalogue.page';
 import { SharedDirectivesModule } from '../directives/shared-directives.module';
 import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
-import { CardProduitComponent } from './components/card-produit/card-produit.component';
-import { CardProduitListComponent } from './components/card-produit-list/card-produit-list.component';
-import { SingleProduitComponent } from './components/single-produit/single-produit.component';
 import { RouterModule } from '@angular/router';
-
-
+import { CardProduitPageModule } from './card-produit/card-produit.module';
 
 @NgModule({
   imports: [
@@ -22,18 +18,12 @@ import { RouterModule } from '@angular/router';
     SharedDirectivesModule,
     IonicHeaderParallaxModule,
     RouterModule,
+    CardProduitPageModule
   ],
   declarations: [
-    CataloguePage, 
-    CardProduitComponent, 
-    CardProduitListComponent,
-    SingleProduitComponent
+    CataloguePage,
   ],
   exports:[
-    CardProduitComponent,
-    CardProduitListComponent,
-    CardProduitListComponent,
-    SingleProduitComponent,
     RouterModule,
   ]
 })

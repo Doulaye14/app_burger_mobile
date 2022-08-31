@@ -1,0 +1,4 @@
+<ion-item color="info" button *ngFor="let item of livreur?.livraisons" (click)="showLivraison(item.id)" detail>
+  <ion-label>Livraison n° {{ item?.id }} </ion-label>
+  <ion-label>{{ item?.zone?.nom }} </ion-label>
+</ion-item>

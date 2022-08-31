@@ -1,0 +1,56 @@
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="person-sharp" slot="start"></ion-icon>
+        <ion-label>Mon Profil</ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="remove-circle-sharp" slot="start"></ion-icon>
+        <ion-label routerLink="/home" > Deconnexion </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="text-light">Page livreur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="livreur">
+  <ion-title class="text-center">Bienvenus</ion-title>
+  <p>
+    <ion-card>
+      <ion-card-header>
+        <ion-img class="avatar" src="https://img.freepik.com/vecteurs-libre/homme-affaires-caractere-avatar-isole_24877-60111.jpg?w=2000"></ion-img>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-title class="text-center">{{ livreur?.prenom +' '+ livreur?.nom }}</ion-title>
+      </ion-card-content>
+    </ion-card>
+  </p>
+  <p class="container" *ngIf="livreur.livraisons.length != 0">
+    <ion-title class="text-center bg-info text-light">Les livraisons du jour</ion-title>
+    <ion-list>
+      <app-card-livraison [livreur]="livreur"></app-card-livraison>
+    </ion-list>
+  </p>
+
+  <p class="h-25 text-center" *ngIf="livreur.livraisons.length == 0">
+    <ion-title>Pas de livraisons !</ion-title>
+  </p>
+</ion-content>
+
+
+</div>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="warning text-light">
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <p>
+      <ion-card>
+        <ion-card-header color="info">
+          <ion-img class="avatar w-50 m-auto" src="https://img.freepik.com/vecteurs-libre/homme-affaires-caractere-avatar-isole_24877-60111.jpg?w=2000"></ion-img>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-title class="text-center">{{ client?.prenom +' '+ client?.nom }}</ion-title>
+        </ion-card-content>
+      </ion-card>
+    </p>
+    <ion-title class="text-center text-light bg-info">
+      Vos commandes
+    </ion-title>
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of client?.commandes">
+        <ion-item>
+          <ion-label>Commande n° {{ item?.id }} <br> {{ item?.createAt | date: 'dd - MM - yyyy' }}</ion-label>
+          <ion-label class="labelPrix">Prix à payer <br> {{ item.prixTotal | currency: 'fcfa' }} </ion-label> 
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option color="primary">
+            <ion-icon slot="start" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+            More
+          </ion-item-option>
+          <ion-item-option color="secondary">
+            <ion-icon slot="start" name="archive"></ion-icon>
+            Archive
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+
+      
+    </ion-list>
+
+</ion-content>

@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { DomController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { DomController, MenuController } from '@ionic/angular';
 import { Produit } from '../models/produit';
+import { AuthentificationService } from '../services/authentification.service';
 import { ProduitService } from '../services/produit.service';
 
 @Component({
@@ -21,9 +23,10 @@ export class CataloguePage implements OnInit {
 
   isMosaique: boolean = false
 
-  image = "https://img.freepik.com/premium-photo/delicious-burger-with-fun-color-background_191369-190.jpg";
-
-  constructor(private produitService: ProduitService) { }
+  constructor(private produitService: ProduitService,
+              private menu: MenuController,
+              private authService: AuthentificationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.produitService.getAllProduits().subscribe(
@@ -41,7 +44,30 @@ export class CataloguePage implements OnInit {
     if (event.target.id == 2) {
       this.isMosaique = false;
     }
-    console.log(this.isMosaique);
   }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
+  }
+
+  async logout(){
+    await this.authService.logout();
+    this.router.navigateByUrl('/', { replaceUrl: true });
+  }
+
+  showClient(){
+    this.router.navigateByUrl('catalogue/client/'+this.authService.userlogged.value?.id);
+  }
+
 
 }

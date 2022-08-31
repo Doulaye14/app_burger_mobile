@@ -1,0 +1,14 @@
+<ion-card class="mosaique" (click)="redirectTo(product)">
+    <div class="card-group" [ngClass]="{liste: !isGrid}">
+        <div class="card-item">
+            <ion-img class="image" src="{{ 'data:image/*;base64,'+ product?.image }}"></ion-img>
+        </div>
+        <div class="card-item text-center">
+            <span> {{ product?.nom }} </span><br>
+            <span>Prix : {{ product?.prix | currency: 'fcfa'}} </span>
+        </div>
+        <div class="card-item" *ngIf="!isGrid">
+            <ion-item detail ></ion-item>
+        </div>
+    </div>
+</ion-card>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios" color="light"></ion-back-button>
+    </ion-buttons> 
+    <ion-title class="text-light">Page livraison</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-title class="text-center bg-info p-3">
+    Commandes à livrer
+  </ion-title>
+
+  <app-card-commande  *ngFor="let item of commandes" [commande]="item" [zone]="livraison.zone"></app-card-commande>
+
+</ion-content>

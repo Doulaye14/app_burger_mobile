@@ -15,8 +15,8 @@ export class ProduitService {
     return this.http.get<Catalogue>('https://127.0.0.1:8000/api/catalogues');
   }
 
-  getProduitById(idProduit: number):Observable<any>{
-    return this.http.get<any>(`https://127.0.0.1:8000/api/produits/${idProduit}`);
+  getProduitById(idProduit: number):Observable<Produit>{
+    return this.http.get<Produit>(`https://127.0.0.1:8000/api/produits/${idProduit}`);
   }
   
 }

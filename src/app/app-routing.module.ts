@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,12 +9,21 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'catalogue',
+    redirectTo: 'test',
     pathMatch: 'full'
   },
   {
     path: 'catalogue',
-    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule)
+    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule),
+  },
+  {
+    path: 'livreur',
+    loadChildren: () => import('./livreur/livreur.module').then( m => m.LivreurPageModule),
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'test',
+    loadChildren: () => import('./test/test.module').then( m => m.TestPageModule)
   },
   
 ];
@@ -24,4 +34,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

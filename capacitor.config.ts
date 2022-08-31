@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'burger-ionic',
+  appId: 'com.example.app',
+  appName: 'BURGUR-IONIC',
   webDir: 'www',
   bundledWebRuntime: false
 };

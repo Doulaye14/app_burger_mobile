@@ -1,20 +1,61 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+  <ion-toolbar color="warning">
+    <ion-title class="text-center text-light">
+      Brasil Burger
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" [fullscreen]="true">
+ 
+  
+    <ion-slides #slides  pager="true" class="h-100">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+        <ion-slide class="step-one d-flex flex-column h-100">
+          <div class="mt-0">
+            <h2 class="text-warning w-75 m-auto mt-5">The Good Burgers !</h2>
+            <ion-img class="logo" src="../../assets/images-removebg-preview.png" width="50" height="50" ></ion-img>
+            <h2 class="text-light">Bienvenus !</h2>
+          </div>
+            <p class="w-75 mt-0 text-light">
+              Faites vos commandes et dégustez les meilleurs burgers de tous les temps;
+            </p>
+        </ion-slide>
+
+        <ion-slide class="step-one h-100 d-flex flex-column justify-content-center ">
+          <div>
+            <ion-img class="logo-con" src="../../assets/images-removebg-preview.png" width="50" height="50" ></ion-img>
+          </div>
+          <h1 class="text-light" >Connectez vous !</h1>
+          
+          <form (ngSubmit)="login()" [formGroup]="userObj" class="w-75 m-auto">
+            <div class="input-group">
+              <ion-item>
+                <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+              </ion-item>
+              <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+                <span *ngIf="email.errors?.required">Email is required</span>
+                <span *ngIf="email.errors?.email">Email is invalid</span>
+              </div>
+              <ion-item>
+                <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+              </ion-item>
+              <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+                <span *ngIf="password.errors?.required">Password is required</span>
+                <span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>
+              </div>
+            </div>
+         
+            <ion-button type="submit" color="warning"  [disabled]="!userObj.valid">Log in</ion-button>
+            <ion-button  routerLink="/catalogue" type="button" expand="block" color="warning" fill="clear">Accedez à nos produits !
+            </ion-button>
+          </form>
+
+        </ion-slide>
+
+    </ion-slides>
+
+    <div class="couche"></div>
+
+
 </ion-content>

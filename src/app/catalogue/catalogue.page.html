@@ -1,44 +1,85 @@
-<ion-header
-  parallax
-  imageUrl="https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/misc/49/7549c07d13509384.jpg"
-  height="350"
-  bgPosition="top"
->
- <ion-toolbar color="warning">
-  <ion-title class="titre text-light text-center">Brazil Burgers</ion-title>
-</ion-toolbar>
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="fast-food" slot="start"></ion-icon>
+        <ion-label>Nos Menus</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="server" slot="start"></ion-icon>
+        <ion-label>Nos Burgers</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-list>
+          <ion-label>
+          <ion-icon name="apps-sharp" slot="start"></ion-icon>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nos Compléments</ion-label>
+          <ion-item>
+            <ion-icon name="pizza-sharp" slot="start"></ion-icon>
+            <ion-label>Nos Frites</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="beer-sharp" slot="start"></ion-icon>
+            <ion-label>Nos Boissons</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person-sharp" slot="start"></ion-icon>
+        <ion-label (click)="showClient()" >Mon Profil</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="shapes-sharp" slot="start"></ion-icon>
+        <ion-label>Mes Commandes</ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="remove-circle-sharp" slot="start"></ion-icon>
+        <ion-label (click)="logout()"> Deconnexion </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-
-</ion-header>
-
-<ion-content class="contenu">
-
-  <ion-segment class="bg-warning">
+<div class="ion-page" id="main-content">
+  <ion-header
+    parallax
+    imageUrl="https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/misc/49/7549c07d13509384.jpg"
+    height="400"
+    bgPosition="top"
+  >
+    <ion-toolbar color="warning">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="text-light">Brsil Burgers App</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+  
+  <ion-content class="">
+    
+    <ion-segment class="bg-warning mt-3">
       <ion-segment-button id="1" (click)="onViewCatalogue($event)">
         <ion-icon name="grid"></ion-icon>
       </ion-segment-button>
       <ion-segment-button id="2" (click)="onViewCatalogue($event)">
         <ion-icon name="list"></ion-icon>
       </ion-segment-button>
-  </ion-segment>
-
-
+    </ion-segment>
+    
+    <!-- Affichage catalogue -->
     <ion-title class="titreProduit">Nos Menus</ion-title>
-    <div class="mosaique" *ngIf="isMosaique">
-      <app-card-produit *ngFor="let item of menus" [product]="item"></app-card-produit>
-    </div>
-
-    <div class="liste" *ngIf="!isMosaique">
-      <app-card-produit-list *ngFor="let item of menus" [produitList]="item"></app-card-produit-list>
-    </div>
-
+    <app-card-produit *ngFor="let item of menus" [product]="item" [isGrid]="isMosaique"></app-card-produit>
+  
     <ion-title class="titreProduit">Nos Burgers</ion-title>
-    <div class="mosaique" *ngIf="isMosaique">
-      <app-card-produit *ngFor="let item of burgers" [product]="item"></app-card-produit>
-    </div>
+    <app-card-produit *ngFor="let item of burgers" [product]="item" [isGrid]="isMosaique"></app-card-produit>
+    
+  </ion-content>
+</div>
 
-    <div class="liste" *ngIf="!isMosaique">
-      <app-card-produit-list *ngFor="let item of burgers" [produitList]="item"></app-card-produit-list>
-    </div>
 
-</ion-content>

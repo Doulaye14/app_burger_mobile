@@ -6,7 +6,7 @@ import * as fr from '@angular/common/locales/fr';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { registerLocaleData } from '@angular/common';
+import { NgIfContext, registerLocaleData } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,8 +16,10 @@ import { registerLocaleData } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
-    {provide: LOCALE_ID, useValue: 'fr-FR'}],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
+    {provide: LOCALE_ID, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

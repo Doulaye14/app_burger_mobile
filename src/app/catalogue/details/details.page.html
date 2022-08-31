@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar class="text-light fs-3 px-2" color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Page Détails Produit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="containe">
+  <ion-title class="m-auto text-center mt-4 mb-3"> {{ product?.nom }} </ion-title>
+  <ion-title class="m-auto text-center mt-4 mb-3">Prix : {{ product?.prix | currency: 'fcfa' }} </ion-title>
+  <ion-img src="{{ 'data:image/*;base64,'+ product?.image }}" class="image-detail"></ion-img>
+  <p class="ion-padding text-center m-auto">
+    <ion-title>Descriptions</ion-title>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, eaque.
+  </p>
+  <div  >
+  </div>
+  <div class="ion-padding" *ngIf="product?.type?.libele == 'menus'">
+
+    <ion-title>Compositions</ion-title>
+    <ion-list>
+      <h5 class="pl-2 "> {{ qntBurger }} Burger (s) </h5>
+      <ion-item *ngFor="let item of menusBurgers">
+        <ion-img class="smallImage w-25" maginright10 src=" {{ 'data:image/*;base64,'+ item.burger?.image }} "></ion-img>
+        <ion-label> {{ item.burger?.nom }} </ion-label>
+        <ion-label> {{ item.burger.prix | currency: 'fcfa' }} </ion-label> 
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="product?.menusPortionFrites">
+      <h5 class="pl-2 "> {{ qntFrites }} Portion Frites (s) </h5>
+      <ion-item *ngFor="let item of menusPortions">
+        <ion-img class="smallImage w-25" maginright10 src=" {{ 'data:image/*;base64,'+ item?.portionFrites?.image }} "></ion-img>
+        <ion-label> {{ item?.portionFrites?.nom }} </ion-label>
+        <ion-label> {{ item?.portionFrites?.prix | currency: 'fcfa' }} </ion-label> 
+      </ion-item>
+    </ion-list>
+    
+  </div>
+  <div class="text-center">
+    <ion-button color="warning">Commandez</ion-button>
+  </div>
+</ion-content>
