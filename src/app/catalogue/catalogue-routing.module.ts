@@ -20,6 +20,14 @@ const routes: Routes = [
     path: 'client',
     loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
   },
+  {
+    path: 'card-client',
+    loadChildren: () => import('./card-client/card-client.module').then( m => m.CardClientPageModule)
+  },
+  {
+    path: 'detail-commande-client',
+    loadChildren: () => import('./detail-commande-client/detail-commande-client.module').then( m => m.DetailCommandeClientPageModule)
+  },
   
 ];
 

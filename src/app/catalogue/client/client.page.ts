@@ -14,6 +14,7 @@ export class ClientPage implements OnInit {
 
   client: Client;
   commandes: Commande[];
+  isShow: boolean = false;
 
   constructor(private clientService: ClientService,
               private route: ActivatedRoute) { }
@@ -25,9 +26,12 @@ export class ClientPage implements OnInit {
           this.client = value;
           this.commandes = value.commandes.filter((com: Commande) => com.status == 'EN COURS');
           console.log(this.commandes);
-          
         })
     ).subscribe();
+  }
+
+  show(){
+
   }
 
 }

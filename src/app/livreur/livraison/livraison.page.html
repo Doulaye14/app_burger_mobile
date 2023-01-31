@@ -7,12 +7,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
 
   <ion-title class="text-center bg-info p-3">
     Commandes à livrer
   </ion-title>
 
   <app-card-commande  *ngFor="let item of commandes" [commande]="item" [zone]="livraison.zone"></app-card-commande>
+
+  <ion-button id="open-modal" (click)="startScan()" expand="block">Open Modal</ion-button>
+
+  <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="warning">
+          <ion-title>Scanner</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()" (click)="stopScan()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        
+        <video #video [hidden]="!scanActive" width="100%"></video>
+        <canvas #canvas hidden></canvas>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 </ion-content>

@@ -28,7 +28,9 @@ export interface Livreur {
 	prixTotal: number
 	status: string
 	createAt: string
+	code?: string
 	client?: Client
+	livreur?: Livreur
   }
 
   export interface Client{

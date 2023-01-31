@@ -17,7 +17,14 @@ export class CommandeService {
         com.status = result.status
       }
     )
-
   }
 
+  getCommandeByCode(code: string):Observable<Commande>{
+    return this.http.get<Commande>('https://127.0.0.1:8000/api/commandes?code='+code);
+  }
+
+  getCommandeById(id: number):Observable<Commande>{
+      return this.http.get<Commande>('https://127.0.0.1:8000/api/commandes/'+id);
+  }
+  
 }

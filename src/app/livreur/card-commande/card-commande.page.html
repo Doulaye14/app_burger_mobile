@@ -1,17 +1,15 @@
 <ion-item-sliding>
   <ion-item>
     <ion-label>
-      Commande n° {{ commande?.id }} <br> {{ zone.nom }}
+      Com n° {{ commande?.id }} <br> {{ zone.nom }}
     </ion-label>
     <ion-label> {{ commande?.client?.prenom +' '+ commande?.client?.nom }}  <br> {{ commande?.client?.phone }} </ion-label>
   </ion-item>
   <ion-item-options>
-    <ion-item-option color="primary">
-      <ion-icon slot="bottom" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+    <ion-item-option routerLink="/test" color="primary">
       Scanner
     </ion-item-option>
     <ion-item-option color="secondary" (click)="showCode(commande)">
-      <ion-icon slot="bottom" name="archive"></ion-icon>
       Code
     </ion-item-option>
   </ion-item-options>

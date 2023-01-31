@@ -4,21 +4,24 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LivraisonPageRoutingModule } from './livraison-routing.module';
+import { CardClientPageRoutingModule } from './card-client-routing.module';
 
-import { LivraisonPage } from './livraison.page';
-import { CardCommandePageModule } from '../card-commande/card-commande.module';
+import { CardClientPage } from './card-client.page';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LivraisonPageRoutingModule,
-    CardCommandePageModule,
+    CardClientPageRoutingModule,
     Ng2SearchPipeModule
   ],
-  declarations: [LivraisonPage]
+  declarations: [CardClientPage],
+  exports:[
+    CardClientPage
+  ]
 })
-export class LivraisonPageModule {}
+export class CardClientPageModule {}

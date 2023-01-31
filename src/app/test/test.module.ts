@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { TestPageRoutingModule } from './test-routing.module';
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import { TestPage } from './test.page';
 
@@ -15,7 +14,6 @@ import { TestPage } from './test.page';
     FormsModule,
     IonicModule,
     TestPageRoutingModule,
-    ZXingScannerModule,
   ],
   declarations: [TestPage]
 })

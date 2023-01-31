@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détails commande</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="text-center">
+    <div>Commande n° {{ commande?.id }}</div>
+    <qrcode [qrdata]="commande?.code"></qrcode>
+    <div>Code : {{ commande?.code }} </div>
+  </div>
+
+</ion-content>

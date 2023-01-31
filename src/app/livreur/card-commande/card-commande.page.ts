@@ -12,6 +12,8 @@ export class CardCommandePage implements OnInit {
 
   @Input() commande!: Commande
   @Input() zone!: Zone
+  
+
   constructor(private alertCtrl: AlertController,
               private cmdService: CommandeService) { }
 
@@ -25,13 +27,13 @@ export class CardCommandePage implements OnInit {
   showCode(com: Commande){
     this.alertCtrl.create({
         header: 'Code',
-        message: 'Saisir le code : '+this.getRandomArbitrary(5000, 1000),
+        message: 'Saisir le code généré !',
         inputs: [
           {
-            name: 'Place',
+            name: 'place',
             placeholder: 'Entrer votre code',
             handler: (data: any) =>{
-              
+              console.log(data);
             }
           },
         ],
@@ -41,8 +43,13 @@ export class CardCommandePage implements OnInit {
           },
           {
             text: 'Valider',
-            handler: () =>{
-              this.update(com);
+            handler: (data) =>{
+              if (data.place == com?.code) {
+                this.update(com);
+              }else{
+                this.errAlert();
+              }
+              
             }
           }
         ]
@@ -53,6 +60,16 @@ export class CardCommandePage implements OnInit {
 
   update(com: Commande){
       this.cmdService.updateCommande(com, "VALIDEE");
+  }
+
+  errAlert(){
+    this.alertCtrl.create({
+      header: 'Erreur !',
+      message: 'Code invalide !',
+      buttons:['Ok']
+    }).then(res => {
+      res.present();
+    })
   }
 
 }
